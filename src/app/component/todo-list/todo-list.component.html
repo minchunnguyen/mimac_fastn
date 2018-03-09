@@ -1,0 +1,8 @@
+<p>
+  todo-list works!
+</p>
+
+<a routerLink="/todo">Ajouter une tache</a>
+<ul>
+  <li *ngFor="let tache of todos;">to do {{tache.name}} - finie : {{tache.completed}}</li>
+  </ul>

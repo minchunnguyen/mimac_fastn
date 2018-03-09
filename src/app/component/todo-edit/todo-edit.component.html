@@ -1,0 +1,51 @@
+<p>
+  todo-edit works!
+</p>
+
+
+<!--
+<form (ngSubmit)="save(loginForm)" #loginForm="ngForm">
+ 
+    <label> Tache a ajouter : </label>
+    <input type="text" name="tache" id="todo" class="form-control" ngModel>
+    <button type="submit">Ajouter</button>
+</form>
+-->
+
+
+<form >
+    <div>
+        <span>Nom de la tâche:</span>
+        <span><input type="text" name="name" id="name" [(ngModel)]="todo.name"></span>
+    </div>
+    <div>
+        <span>Terminé:</span>
+        <span><input type="checkbox" name="completed" id="completed" [(ngModel)]="todo.completed"></span>
+    </div>
+    <div>
+        <input type="button" (click)="save()" value="{{todo.id ? 'Enregistrer' : 'Créer'}}">
+    </div>
+</form>
+
+
+
+
+<!--
+<form >
+    <div>
+        <span>Nom de la tâche:</span>
+        <span><input type="text" name="name" id="name" [(ngModel)]="todo.name"></span>
+    </div>
+    <div>
+        <span>Terminé:</span>
+        <span><input type="checkbox" name="completed" id="completed" [(ngModel)]="todo.completed"></span>
+    </div>
+    <div>
+        <input type="button" (click)="save()" value="{{todo.id ? 'Enregistrer' : 'Créer'}}">
+    </div>
+</form>
+-->
+
+<!--
+    <input type="text" name="tache" class="form-control" [(ngModel)]="todo.name">
+-->
