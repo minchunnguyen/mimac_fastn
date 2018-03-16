@@ -18,5 +18,9 @@ export class ParameterComponent implements OnInit {
     this.serviceConnex.deconnexion();
     this.router.navigate(['/auth']);
   }
+  public listeLogs():void{
+    this.router.navigate(['/log']);
+  }
+  
 
 }

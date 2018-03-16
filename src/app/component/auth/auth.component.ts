@@ -31,7 +31,9 @@ export class AuthComponent implements OnInit {
 
     this.serviceConnex.connexion(this.authUser2).subscribe(toto =>{
       this.authUser2.connected = toto.result;
-      if(toto.result == 'true'){
+      //console.log('!!!!!!!!!!' + this.authUser2.connected);
+      //console.log('----------' + toto.result);
+      if(this.authUser2.connected == 'true'){
         this.router.navigate(['/param']);
       }
       localStorage.setItem("user",JSON.stringify(this.authUser2));
