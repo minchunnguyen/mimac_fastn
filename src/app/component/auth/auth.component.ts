@@ -12,8 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AuthComponent implements OnInit {
 
   //authUser: User = new User();
-  public authUser2: User = new User();
-  
+  public  authUser: User = new User();
 
   constructor(private serviceConnex: ConnexionService, private router: Router) { }
 
@@ -27,21 +26,24 @@ export class AuthComponent implements OnInit {
   }
 
   login():void {
-    console.log(this.authUser2.login +'  ' +this.authUser2.pass);
+    console.log(this.authUser.login +'  ' +this.authUser.pass);
 
-    this.serviceConnex.connexion(this.authUser2).subscribe(toto =>{
-      this.authUser2.connected = toto.result;
+    this.serviceConnex.connexion(this.authUser).subscribe(toto =>{
+      this.authUser.connected = toto.result;
       //console.log('!!!!!!!!!!' + this.authUser2.connected);
       //console.log('----------' + toto.result);
-      if(this.authUser2.connected == 'true'){
+      if(this.authUser.connected == 'true'){
         this.router.navigate(['/param']);
       }
-      localStorage.setItem("user",JSON.stringify(this.authUser2));
+      localStorage.setItem("user",JSON.stringify(this.authUser));
     });
   }
 
+ 
+  
+
   onLogin(): void {
-    this.serviceConnex.login(this.authUser2)
+    this.serviceConnex.login(this.authUser)
     .then((user) => {
       console.log('!!!!!!!!!!');
       console.log(user.json());

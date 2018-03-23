@@ -29,25 +29,36 @@ export class ConnexionService {
 
     console.log("envoi d'un requete");
 
-   return this.http.post(this.urlConnexion + "?login="+user.login+"&pass="+user.pass,user)
+   return this.http.post(this.urlConnexion + "?login="+user.login+"&pass="+user.pass,user,{headers: this.headers})
               .map(res => res.json());
        
+  }
+
+  public deconnexion(){ 
+    return this.http.get(this.urlDeconnexion)
+    .map(res=>res.json());
   }
 
   login(user:User):Promise<any>{
     return this.http.post(this.urlConnexion,user,{headers: this.headers}).toPromise();
   }
 
-  public deconnexion() : void {
-    this.http.delete(this.urlDeconnexion).map(res=>res.json());
-  }
+
 
   /*public connexion2(form: NgForm):Promise<any> {
 
     console.log("envoi d'un requete");
 
     return this.http.post(this.urlConnexion,form,{headers: this.headers}).toPromise();
+    
+      public connexion(user: User) {
+
+    console.log("envoi d'un requete");
+
+   return this.http.post(this.urlConnexion,"?login="+user.login+"&pass="+user.pass)
+              .map(res => res.json());
        
+  }
   }*/
 
 }

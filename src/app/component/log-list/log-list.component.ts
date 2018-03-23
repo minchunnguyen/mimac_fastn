@@ -16,8 +16,6 @@ export class LogListComponent implements OnInit {
     this.service.getLogs().subscribe(toto =>{
         this.logs = toto.response.data;
         console.log(this.logs);
-    
-
       },
       err => {
         console.log(err);
