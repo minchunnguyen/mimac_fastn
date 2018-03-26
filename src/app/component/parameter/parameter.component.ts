@@ -11,6 +11,7 @@ import { LogService } from '../../service/log.service';
   styleUrls: ['./parameter.component.css']
 })
 export class ParameterComponent implements OnInit {
+  param : Parameter = new Parameter();
   constructor(private serviceConnex: ConnexionService,
               private serviceParem:LogService, private router: Router) { }
 
@@ -32,14 +33,19 @@ export class ParameterComponent implements OnInit {
   );
   }
 
-
   getConfig():void{
     this.serviceParem.getParameter().subscribe(toto =>{
       console.log(toto.result);
+      this.param.numPlan = toto.numPlan;
+      this.param.numSenSor = toto.numSensor;
+      this.param.daqThreshold = toto.response.config.daqThreshold;
+      this.param.posMax = toto.response.config.postMax;
+      this.param.selectionMode = toto.response.config.selectionMode;
       if(toto.result =='true')
       {
-        //console.log('daqthresholdLOCAL!!!!!!!!!!!!!!!!'+this.parameter.daqThreshold);
-        console.log('daqthreshold!!!!!!!!!!!!!!!!'+toto.response.config.daqThreshold);
+        console.log('postMax : ' + this.param.posMax);
+        console.log('daqThreshold: '+ this.param.daqThreshold);
+        console.log('selectionMode: '+ this.param.selectionMode);
       }
     },
     err => {

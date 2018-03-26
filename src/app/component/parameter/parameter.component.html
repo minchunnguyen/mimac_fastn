@@ -21,5 +21,14 @@
       <hr><br>
       <form (ngSubmit)="getConfig()" novalidate>
         <button type="submit"> getConfig</button>  </form>
+        <div>
+          Parametre du capteur : {{param.numPlan}} , {{param.numSenSor}}
+          <li>
+              post max : {{param.posMax}}
+          </li>
+          <li>
+              Selection Mode : {{param.selectionMode}}
+          </li>
+        </div>
     </div>
 </div>
