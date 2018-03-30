@@ -17,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { ParameterComponent } from './component/parameter/parameter.component';
 import { LogListComponent } from './component/log-list/log-list.component';
 import { LogService } from './service/log.service';
-
+import { HeaderComponent } from './component/header/header.component';
+import { Globals } from './Globals';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,8 +28,7 @@ export const appRoutes: Routes = [
   { path: 'todo/:todoId', component: TodoEditComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'param', component: ParameterComponent},
-  { path: 'log', component: LogListComponent}
-
+  { path: 'log', component: LogListComponent},
 ];
 
 
@@ -44,6 +44,7 @@ export const appRoutes: Routes = [
     AuthComponent,
     ParameterComponent,
     LogListComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,7 @@ export const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash : true})
   ],
-  providers: [TodoService, ConnexionService, LogService],
+  providers: [TodoService, ConnexionService, LogService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

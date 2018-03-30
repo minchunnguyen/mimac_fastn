@@ -6,20 +6,30 @@
   <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div-->
 
-  <nav>
-  <a routerLink="todolist">todos</a>
-  <a routerLink="home">home</a>
-  <a routerLink="help">help</a>
-  <a routerLink="auth">Login</a>
-  <a routerLink="param">Param</a>
-  </nav>
-<router-outlet></router-outlet>
 
 
-<!--
-<app-todo-list></app-todo-list>
+<div class="container main">
+  <div class="page">
+      <div class="row">
+        <div class="col-md-12">
+            <app-header></app-header>
+        </div>
+      <div class="row">
+        <!--nav>
+            <a routerLink="todolist">todos</a>
+            <a routerLink="home">home</a>
+            <a routerLink="help">help</a>
+            <a routerLink="param">Param</a>
+        </nav-->
+      <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div>
+      <img width="150" src ="http://localhost/daq/images/navajo_m.png" alt="libnavaro">
+    </div>
+  </footer>
+</div>
 
-  <app-home></app-home>
-  <app-help></app-help>
--->
 

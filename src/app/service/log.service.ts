@@ -18,4 +18,9 @@ export class LogService {
     return this.http.get(`/daq/dynamic/doCommandSensor.json?command=getConfig&numPlan=3&numSensor=1`)
     .map(res=>res.json());
   }
+
+  public setParameter(){
+    return this.http.get(`/daq/dynamic/doCommandSensor.json?command=getConfig&numPlan=3&numSensor=1`)
+    .map(res=>res.json());
+  }
 }

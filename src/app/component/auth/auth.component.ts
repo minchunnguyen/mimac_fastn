@@ -3,6 +3,7 @@ import { User } from '../../model/user';
 import { ConnexionService } from '../../service/connexion.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Globals } from '../../Globals';
 
 @Component({
   selector: 'app-auth',
@@ -14,15 +15,10 @@ export class AuthComponent implements OnInit {
   //authUser: User = new User();
   public  authUser: User = new User();
 
-  constructor(private serviceConnex: ConnexionService, private router: Router) { }
+  constructor(private serviceConnex: ConnexionService, private router: Router
+              ,private globals: Globals) { }
 
   ngOnInit() {
-    /*let sampleUser: any = {
-      login: 'mtnguyen' as string,
-      pass: 'Mtnguyen' as string
-    };
-    this.serviceConnex.connexion(sampleUser).subscribe();*/
-    //this.login();
   }
 
   login():void {
@@ -34,25 +30,32 @@ export class AuthComponent implements OnInit {
       //console.log('----------' + toto.result);
       if(this.authUser.connected == 'true'){
         this.router.navigate(['/param']);
+        this.globals.is_home = false;
       }
       localStorage.setItem("user",JSON.stringify(this.authUser));
     });
   }
 
  
-  
-
-  onLogin(): void {
-    this.serviceConnex.login(this.authUser)
-    .then((user) => {
-      console.log('!!!!!!!!!!');
-      console.log(user.json());
-    })
-    .catch((err) => {
+  logOut():void{
+    this.serviceConnex.deconnexion().subscribe(toto =>{
+      console.log(toto.result);
+      if(toto.result =='true')
+      {
+        this.router.navigate(['/home']);
+        this.globals.is_home = true;
+      }
+    },
+    err => {
       console.log(err);
-    });
+    }
+  );
   }
 
+
+  get statusHome(): boolean {
+    return this.globals.is_home;
+  }
 
 }
 
