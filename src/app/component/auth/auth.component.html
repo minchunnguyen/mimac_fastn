@@ -1,11 +1,8 @@
         <ng-container *ngIf="statusHome===true; then accueil else menu"></ng-container>
         <ng-template #accueil>
-            <div>Then Block! </div>
             <div>
                 <form (ngSubmit)="login()" novalidate>
                   <div class="row">
-                      <a routerLink="home">home</a>
-
                       <div class="form-group" class="col-md-2">
                           <input type="text" class="form-control" id="login" placeholder=" login" [(ngModel)]="authUser.login" name="login" required>
                       </div>
@@ -24,11 +21,7 @@
         <ng-template #menu>
           <div class="container">
             <div class="row">
-              <div class="col-md-2">
-                  <a routerLink="home">home</a>
-                {{globals.title}}
-              </div>
-              <div class="col-md-offset-2 col-md-8">
+              <div class="col-md-offset-2 col-md-2">
                 Bonjour  {{authUser.login}}
                 <form (ngSubmit)="logOut()" novalidate>
                     <button type="submit">Se Déconnecter</button> 

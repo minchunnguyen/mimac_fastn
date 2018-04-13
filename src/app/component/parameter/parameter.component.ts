@@ -15,7 +15,6 @@ export class ParameterComponent implements OnInit {
   param : Parameter = new Parameter();
   constructor(private serviceConnex: ConnexionService,
               private serviceParem:LogService, 
-              private router: Router,
               private globals: Globals) { }
 
   ngOnInit() {
@@ -46,10 +45,6 @@ export class ParameterComponent implements OnInit {
   setConfig():void{
       this.serviceParem.setParameter().subscribe();
   }
-  
-  public listeLogs():void{
-    this.router.navigate(['/log']);
-  }
-  
+
 
 }

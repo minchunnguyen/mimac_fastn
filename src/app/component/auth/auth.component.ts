@@ -4,7 +4,7 @@ import { ConnexionService } from '../../service/connexion.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Globals } from '../../Globals';
-
+//import {Popup} from 'ng2-opd-popup';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -29,8 +29,11 @@ export class AuthComponent implements OnInit {
       //console.log('!!!!!!!!!!' + this.authUser2.connected);
       //console.log('----------' + toto.result);
       if(this.authUser.connected == 'true'){
-        this.router.navigate(['/param']);
+        //this.router.navigate(['/header']);
         this.globals.is_home = false;
+        this.globals.is_loggedIn = true;
+      }else{
+        //  this.popup.show();
       }
       localStorage.setItem("user",JSON.stringify(this.authUser));
     });
@@ -44,6 +47,7 @@ export class AuthComponent implements OnInit {
       {
         this.router.navigate(['/home']);
         this.globals.is_home = true;
+        this.globals.is_loggedIn = false;
       }
     },
     err => {
@@ -55,6 +59,10 @@ export class AuthComponent implements OnInit {
 
   get statusHome(): boolean {
     return this.globals.is_home;
+  }
+
+  public setStatusHome(status: boolean):void{
+    this.globals.is_home = status;
   }
 
 }

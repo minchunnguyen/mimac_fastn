@@ -1,71 +1,86 @@
 
 <div class="row">
-  <div class ="col-md-1">
-    <hr><br>
-  </div>
-
-  <div class ="col-md-1">
-    <hr><br>
-    <form (ngSubmit)="listeLogs()" novalidate>
-      <button type="submit"> Log</button>  </form>
-  </div>
-
-  <div class ="col-md-3">
-      <hr><br>
-      <form (ngSubmit)="getConfig()" novalidate>
-        <button type="submit"> getConfig</button>  </form>
-        <div>
-          Parametre du capteur : {{param.numPlan}} , {{param.numSenSor}}
-          <li>
-              post max : {{param.posMax}}
-          </li>
-          <li>
-              Selection Mode : {{param.selectionMode}}
-          </li>
+        <div class ="col-md-1">
+          <hr><br>
         </div>
-    </div>
-
-
 </div>
-    <!--link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="panel with-nav-tabs panel-success">
-                    <div class="panel-heading">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab1success" data-toggle="tab">Acquisition</a></li>
-                                <li><a href="#tab2success" data-toggle="tab">Circuit de gaz</a></li>
-                                <li><a href="#tab3success" data-toggle="tab">Electriques</a></li>
-                                <li><a href="#tab4success" data-toggle="tab">Vdrift et Densité Gaz</a></li>
-                            </ul>
-                    </div>
-                    <div class="panel-body">
-                        <div class="tab-content">
-                            <div class="tab-pane fade in active">
-                                    
+
+        <!--div class ="col-md-3">
+            <hr><br>
+            <form (ngSubmit)="getConfig()" novalidate>
+              <button type="submit"> getConfig</button>  </form>
+              <div>
+                Parametre du capteur : {{param.numPlan}} , {{param.numSenSor}}
+                <li>
+                    post max : {{param.posMax}}
+                </li>
+                <li>
+                    Selection Mode : {{param.selectionMode}}
+                </li>
+              </div>
+          </div-->
+          <!--div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="panel with-nav-tabs panel-success">
+                            <div class="panel-heading">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"> <a href="#acq" data-toggle="tab">Acquisition</a></li>
+                                        <li><a href="#todo"  data-toggle="tab">Circuit de gaz</a></li>
+                                        <li><a href="#tab2success" data-toggle="tab">Electriques</a></li>
+                                        <li><a href="#tab4success" data-toggle="tab">Vdrift et Densité Gaz</a></li>
+                                    </ul>
                             </div>
-                            <div class="tab-pane fade in active" id="tab1success">Success 1
-                                    <div class = "col-lg-offset-8 col-lg-6">
-                                        <button type="submit"> Modifier</button> 
-                                    </div> 
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active">
+                                            
+                                    </div>
+                                    <div class="tab-pane fade in active" id="tab1success">
+                                        <div>
+                                                <app-acquisition></app-acquisition>
+                                        </div>
+                                        <div class = "col-lg-offset-8 col-lg-6">
+                                            <button type="submit"> Modifier</button> 
+                                        </div> 
+                                    </div>
+                                    <div class="tab-pane fade" id="todo">
+                                           <app-todo></app-todo>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab3success">Success 3</div>
+                                    <div class="tab-pane fade" id="tab4success">Success 4</div>
+                                    <div class="tab-pane fade" id="tab5success">Success 5</div>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="tab2success">   
-                                    <app-header></app-header>
-                            </div>
-                            <div class="tab-pane fade" id="tab3success">Success 3</div>
-                            <div class="tab-pane fade" id="tab4success">Success 4</div>
-                            <div class="tab-pane fade" id="tab5success">Success 5</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div-->
+            </div-->
 
 
-    
+<div class="container">
+        <h2>Parameters Tab</h2>
+        <ul class="nav nav-tabs">
+          <li><a href="#acq">Acquisition</a></li>
+          <li><a href="#help">Circuit de gaz</a></li>
+          <li><a href="#help">Electriques</a></li>
+          <li><a href="#help">Vdrift and Densité Gaz</a></li>
+        </ul>
+        <!--div class="grid grid-pad">
+                <a>
+                    <div class="module hero"><a href="#acq">Acquisition</a></div>
+                    <div class="module hero"><a href="#acq">Circuit de gaz</a></div>
+                    <div class="module hero"><a href="#acq">Electriques</a></div>
+                    <div class="module hero"><a href="#acq">Vdrift and Densité Gaz</a></div>
+                </a>
+        </div-->
+</div>
 
 
+      
+        
+        
+            
+        
+        
+        

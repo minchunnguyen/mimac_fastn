@@ -13,5 +13,11 @@ export class HeaderComponent implements OnInit {
     console.log("title: " + this.globals.title);
 
   }
+  get statusConnexion(): boolean {
+    return this.globals.is_loggedIn;
+  }
 
+  public setStatusConnexion(status: boolean):void{
+    this.globals.is_loggedIn = status;
+  }
 }

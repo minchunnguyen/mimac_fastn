@@ -6,6 +6,8 @@ import { TodoComponent } from './component/todo/todo.component';
 import { TodoListComponent } from './component/todo-list/todo-list.component';
 import {TodoService} from './service/todo.service';
 import {HttpModule} from '@angular/http';
+//import {PopupModule} from 'ng2-opd-popup';
+import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component'
 import { RouterModule, Routes } from '@angular/router';
@@ -19,9 +21,13 @@ import { LogListComponent } from './component/log-list/log-list.component';
 import { LogService } from './service/log.service';
 import { HeaderComponent } from './component/header/header.component';
 import { Globals } from './Globals';
+import { DaqComponent } from './component/daq/daq.component';
+import { AcquisitionComponent } from './component/acquisition/acquisition.component';
+import { MenuModulesComponent } from './component/menu-modules/menu-modules.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'header', component: HeaderComponent },
   { path: 'todolist', component: TodoListComponent },
   { path: 'help', component: HelpComponent },
   { path: 'todo', component: TodoEditComponent },
@@ -29,6 +35,8 @@ export const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'param', component: ParameterComponent},
   { path: 'log', component: LogListComponent},
+  { path: 'daq', component: DaqComponent},
+  { path: 'acq', component: AcquisitionComponent},
 ];
 
 
@@ -45,12 +53,16 @@ export const appRoutes: Routes = [
     ParameterComponent,
     LogListComponent,
     HeaderComponent,
+    DaqComponent,
+    AcquisitionComponent,
+    MenuModulesComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
     FormsModule,
+    //PopupModule,
     RouterModule.forRoot(appRoutes, {useHash : true})
   ],
   providers: [TodoService, ConnexionService, LogService, Globals],

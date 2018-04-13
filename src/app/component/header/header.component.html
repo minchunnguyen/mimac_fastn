@@ -1,1 +1,34 @@
-  <app-auth></app-auth>
+  <!--app-auth></app-auth-->
+
+  <ng-container *ngIf="statusConnexion===false; then accueil else menu"></ng-container>
+  <ng-template #accueil>
+      <div> 
+        <app-auth></app-auth>
+      </div>
+  </ng-template>
+
+
+  <ng-template #menu>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                {{globals.title}}
+              </div>
+              <div class="col-md-2">
+                    <div>
+                        <app-menu-modules></app-menu-modules>
+                    </div>
+              </div> 
+            <div class="col-md-1">
+                <app-auth></app-auth>
+            </div>
+        </div>
+        <!--div class="row">
+            <div class="col-md-1">
+                <app-parameter></app-parameter>
+            </div>
+        </div-->
+    </div>
+  </ng-template>
+  
+  
