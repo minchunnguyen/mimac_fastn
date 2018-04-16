@@ -1,6 +1,7 @@
 export class Parameter {
     gap: number;
     echantil: number;
+    nbpistes: number;
     pixelsize:number; 
     pretrigger:number;
     posMax: number;

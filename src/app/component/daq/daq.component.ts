@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./daq.component.css']
 })
 export class DaqComponent implements OnInit {
-
   constructor(  private router: Router) { }
 
   ngOnInit() {
