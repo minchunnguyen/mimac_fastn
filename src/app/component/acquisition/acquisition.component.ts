@@ -25,14 +25,24 @@ export class AcquisitionComponent implements OnInit {
   selectedPosmax:number = 0;
   selectedEdge: number = 0;
   selectedSeuilAdc: number = 0; 
+  test : boolean = true;
   constructor(private router: Router) { 
 
   }
 
   ngOnInit() {
-    this.parameters = {gap:512, echantil: 25, nbpistes:256, pixelsize: 424, pretrigger: 32, posMax:1024,
-                        edge:5, selectionMode:false, seuilAdc:15, autoRestart:true,
-                        numPlan: 0, numSenSor: 1, daqThreshold : 2};
+    localStorage.getItem("test");
+    console.log('valeur de TEST : '+ this.test);
+
+    if(this.test){
+      this.parameters = {gap:512, echantil: 25, nbpistes:256, pixelsize: 424, pretrigger: 32, posMax:1024,
+        edge:5, selectionMode:false, seuilAdc:15, autoRestart:true,
+        numPlan: 0, numSenSor: 1, daqThreshold : 2};
+    }
+
+    localStorage.getItem("param");
+    console.log('valeur de GAP dans le nGnit: '+ this.parameters.gap);
+    
   }
 
   setParam(param: Parameter){
@@ -46,12 +56,6 @@ export class AcquisitionComponent implements OnInit {
   goBack(){
     this.router.navigate(['/param']);
   }
-  
-  public setValeurs() : void {
-    this.parameters.gap = this.selectedGap;
-    console.log('valeur de gap : '+ this.parameters.gap);
-    
-  }
 
   modifier(){
     this.parameters.gap = this.selectedGap;
@@ -62,7 +66,9 @@ export class AcquisitionComponent implements OnInit {
     this.parameters.posMax = this.selectedPosmax;
     this.parameters.edge = this.selectedEdge;
     this.parameters.seuilAdc = this.selectedSeuilAdc;
-
+    localStorage.setItem("param",JSON.stringify(this.parameters));
+    this.test = false;
+    localStorage.setItem("test",JSON.stringify(this.test));
     console.log('valeur de selecteditem dans le check: '+ this.parameters.gap);
   }
   

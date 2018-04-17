@@ -4,6 +4,7 @@ import { ConnexionService } from '../../service/connexion.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Globals } from '../../Globals';
+import { CookieService } from 'ngx-cookie-service';
 //import {Popup} from 'ng2-opd-popup';
 @Component({
   selector: 'app-auth',
@@ -11,14 +12,16 @@ import { Globals } from '../../Globals';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-
+  cookieValue = 'UNKNOWN';
   //authUser: User = new User();
   public  authUser: User = new User();
 
   constructor(private serviceConnex: ConnexionService, private router: Router
-              ,private globals: Globals) { }
+              ,private globals: Globals, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.cookieService.set( 'Test', 'Hello World' );
+    this.cookieValue = this.cookieService.get('Test');
   }
 
   login():void {
@@ -26,8 +29,6 @@ export class AuthComponent implements OnInit {
 
     this.serviceConnex.connexion(this.authUser).subscribe(toto =>{
       this.authUser.connected = toto.result;
-      //console.log('!!!!!!!!!!' + this.authUser2.connected);
-      //console.log('----------' + toto.result);
       if(this.authUser.connected == 'true'){
         //this.router.navigate(['/header']);
         this.globals.is_home = false;

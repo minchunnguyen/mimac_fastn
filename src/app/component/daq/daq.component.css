@@ -1,0 +1,35 @@
+body {
+    background: black;
+  }
+  .button {
+    background-color: #004A7F;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    animation: glowing 1500ms infinite;
+  }
+
+  @keyframes glowing {
+    0% { background-color: rgb(8, 54, 2); box-shadow: 0 0 3px rgb(8, 54, 2); }
+    50% { background-color: rgb(22, 255, 0); box-shadow: 0 0 3px rgb(22, 255, 0); }
+    100% { background-color: rgb(8, 54, 2); box-shadow: 0 0 3px rgb(8, 54, 2); }
+  }
+
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 24px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+
+  }
