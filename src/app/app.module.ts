@@ -6,7 +6,7 @@ import { TodoComponent } from './component/todo/todo.component';
 import { TodoListComponent } from './component/todo-list/todo-list.component';
 import {TodoService} from './service/todo.service';
 import {HttpModule} from '@angular/http';
-//import {PopupModule} from 'ng2-opd-popup';
+import {PopupModule} from 'ng2-opd-popup';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component'
@@ -65,8 +65,9 @@ export const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     FormsModule,
-    //PopupModule,
-    RouterModule.forRoot(appRoutes, {useHash : true})
+    RouterModule.forRoot(appRoutes, {useHash : true}),
+    //PopupModule.forRoot()
+
   ],
   providers: [TodoService, ConnexionService, LogService, Globals,CookieService],
   bootstrap: [AppComponent]

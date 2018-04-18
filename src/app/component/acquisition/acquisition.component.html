@@ -1,3 +1,6 @@
+<ng-container *ngIf="test==false; then accueil else menu"></ng-container>
+
+<ng-template #accueil>
 <div>
   <div class="row">
     <div class="col-md-3">
@@ -5,7 +8,6 @@
             <li> Gap: </li>
         </ul>
     </div>
-    <div class="col-md-1">{{parameters.gap}}  μm </div>
     <div class="col-md-2">
         <select [(ngModel)]="selectedGap">
             <option *ngFor="let item of gaps;">{{item}}</option>
@@ -19,7 +21,6 @@
               <li> Techantillonnage: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.echantil}} ns</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedEchantil">
               <option *ngFor="let item of echantillons;">{{item}}</option>
@@ -33,7 +34,6 @@
               <li> NbPistes: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.nbpistes}}</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedNbpiste">
               <option *ngFor="let item of nbpistes;">{{item}}</option>
@@ -47,7 +47,6 @@
               <li> PixelSize: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.pixelsize}}  μm</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedPixelsize">
               <option *ngFor="let item of pixelsizes;">{{item}}</option>
@@ -61,7 +60,6 @@
               <li> PreTrigger: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.pretrigger}}</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedPretrigger">
               <option *ngFor="let item of pretriggers;">{{item}}</option>
@@ -75,7 +73,6 @@
               <li> PosMax: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.posMax}}</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedPosmax">
               <option *ngFor="let item of posmaxs;">{{item}}</option>
@@ -89,7 +86,6 @@
               <li> Edge: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.edge}}</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedEdge">
               <option *ngFor="let item of edges;">{{item}}</option>
@@ -103,7 +99,6 @@
               <li> Mode Sélection: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.selectionMode}}</div>
   </div>
 
   <div class="row">
@@ -112,7 +107,6 @@
               <li> Seuil Flash-ADC: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.seuilAdc}}</div>
       <div class="col-md-2">
           <select [(ngModel)]="selectedSeuilAdc">
               <option *ngFor="let item of seuilADCs;">{{item}}</option>
@@ -126,23 +120,72 @@
               <li> autoRestart: </li>
           </ul>
       </div>
-      <div class="col-md-1">{{parameters.autoRestart}}</div>
   </div>
 </div>
 
 
 <div>
   <div class="row">
-    <div class="col-md-3">
-        <form (ngSubmit)="goBack()" novalidate>
-            <button type="submit">Retourner</button> 
-        </form>
-    </div>
-    <div class="col-md-3">
+    <div class="col-md-offset-3 col-md-3">
         <form (ngSubmit)="modifier()" novalidate><button type="submit">Valider</button></form>
     </div>
   </div>
     
 </div>
+</ng-template>
 
   <!--p>Elément sélectionné : {{this.selectedGap}}</p-->
+
+<ng-template #menu>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> Gap: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.gap}}  μm </div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> Techantillonnage: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.echantil}} ns</div>
+            </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> NbPistes: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.echantil}}   </div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> PixelSize: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.pixelsize}}   </div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> PreTrigger: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.pretrigger}}  </div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> PosMax: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.posMax}}</div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> Edge: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.edge}}</div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> Mode Sélection: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.selectionMode}}</div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> Seuil Flash-ADC: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.seuilAdc}}</div>
+        </div>
+        <div class="row">
+                <div class="col-md-3"> <ul> <li> autoRestart: </li></ul></div>                   
+                <div class="col-md-1">{{parameters.autoRestart}}</div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-3">
+                    <form (ngSubmit)="goBack()" novalidate>
+                        <button type="submit">Retourner</button> 
+                    </form>
+                </div>
+                <div class="col-md-3">
+                        <form (ngSubmit)="tester()" novalidate><button type="submit">Modifier</button></form>
+                </div>
+        </div>
+</ng-template>

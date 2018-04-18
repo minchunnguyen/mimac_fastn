@@ -1,7 +1,7 @@
 
 export class User {
-  login: string;
-  pass: string;
+  login: String;
+  pass: String;
   connected: string;
 
 }

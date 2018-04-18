@@ -20,23 +20,23 @@ export class AuthComponent implements OnInit {
               ,private globals: Globals, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.cookieService.set( 'Test', 'Hello World' );
-    this.cookieValue = this.cookieService.get('Test');
+    //this.cookieService.set( 'Test', 'Hello World' );
+    //this.cookieValue = this.cookieService.get('Test');
+    if(localStorage.getItem('user')!=null){
+        //this.authUser.login = localStorage.getItem('user');
+        this.authUser.login = localStorage.getItem('user');
+        console.log("valeur de login "+ this.authUser.login);
+        this.setStatusConnexion(true);
+    }
   }
 
   login():void {
-    console.log(this.authUser.login +'  ' +this.authUser.pass);
-
     this.serviceConnex.connexion(this.authUser).subscribe(toto =>{
       this.authUser.connected = toto.result;
       if(this.authUser.connected == 'true'){
-        //this.router.navigate(['/header']);
-        this.globals.is_home = false;
-        this.globals.is_loggedIn = true;
-      }else{
-        //  this.popup.show();
+        this.setStatusConnexion(true);
       }
-      localStorage.setItem("user",JSON.stringify(this.authUser));
+      localStorage.setItem('user',JSON.stringify(this.authUser.login));
     });
   }
 
@@ -47,8 +47,8 @@ export class AuthComponent implements OnInit {
       if(toto.result =='true')
       {
         this.router.navigate(['/home']);
-        this.globals.is_home = true;
-        this.globals.is_loggedIn = false;
+        //this.globals.is_home = true;
+        this.setStatusConnexion(false);
       }
     },
     err => {
@@ -57,14 +57,21 @@ export class AuthComponent implements OnInit {
   );
   }
 
+  get statusConnexion(): boolean {
+    return this.globals.is_loggedIn;
+  }
 
-  get statusHome(): boolean {
+  public setStatusConnexion(status: boolean):void{
+    this.globals.is_loggedIn = status;
+  }
+
+  /*get statusHome(): boolean {
     return this.globals.is_home;
   }
 
   public setStatusHome(status: boolean):void{
     this.globals.is_home = status;
-  }
+  }*/
 
 }
 
