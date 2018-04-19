@@ -25,6 +25,7 @@ import { DaqComponent } from './component/daq/daq.component';
 import { AcquisitionComponent } from './component/acquisition/acquisition.component';
 import { MenuModulesComponent } from './component/menu-modules/menu-modules.component';
 import { CircuitGazComponent } from './component/circuit-gaz/circuit-gaz.component';
+import { AcquisitionService } from './service/acquisition.service';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -69,7 +70,7 @@ export const appRoutes: Routes = [
     //PopupModule.forRoot()
 
   ],
-  providers: [TodoService, ConnexionService, LogService, Globals,CookieService],
+  providers: [TodoService, ConnexionService, LogService, Globals,CookieService, AcquisitionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

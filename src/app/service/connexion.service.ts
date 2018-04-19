@@ -17,14 +17,6 @@ export class ConnexionService {
 
   }
 
-  /*public connexion(user: User): Observable<User> {
-
-    console.log("envoi d'un requete");
-
-   return this.http.post(this.urlConnexion, "login: "+user.login +"\npass: "+user.pass).map(res => res.json());
-       
-  }*/
-
   public connexion(user: User) {
 
     console.log("envoi d'un requete");
@@ -44,6 +36,15 @@ export class ConnexionService {
   }
 
 
+
+  
+  /*public connexion(user: User): Observable<User> {
+
+    console.log("envoi d'un requete");
+
+   return this.http.post(this.urlConnexion, "login: "+user.login +"\npass: "+user.pass).map(res => res.json());
+       
+  }*/
 
   /*public connexion2(form: NgForm):Promise<any> {
 

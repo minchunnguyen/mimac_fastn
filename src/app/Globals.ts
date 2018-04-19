@@ -4,5 +4,6 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 export class Globals{
     is_home :boolean = true;
     is_loggedIn: boolean = false;
+    module: boolean;
     title: string ="test";
 }

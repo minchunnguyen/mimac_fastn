@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./daq.component.css']
 })
 export class DaqComponent implements OnInit {
+  contenu : String;
   constructor(  private router: Router) { }
 
   ngOnInit() {
@@ -15,5 +16,5 @@ export class DaqComponent implements OnInit {
   public listeLogs():void{
     this.router.navigate(['/log']);
   }
-  
+
 }
