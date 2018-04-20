@@ -1,35 +1,40 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-1">
-            <a routerLink="param">Parametre</a>  
-            
-        </div>
-        <div class="col-md-1">
-            <a routerLink="daq">DAQ</a>
-        </div>
-  </div>
+<div class = "col-md-3">
+        <a href="#home" (click)="setStatusHome()">MIMAC-FASTn</a>
 </div>
-
-
-
-<!--div class="container">
+<ng-container *ngIf="getStatusHome(); then hometem else menutem"></ng-container>
+<ng-template #hometem> 
         <div class="row">
-            <div class="col-md-1">
-                <a href="#" (click)="testClick('param')">Parametre</a>
+                <div class="col-md-1">
+                    <a href="#" (click)="testClick('param')">Parametre</a>
+                </div>
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="#" (click)="testClick('daq')">DAQ</a>
+                </div>
             </div>
-            <div class="col-md-1">
-                <a href="#" (click)="testClick('daq')">DAQ</a>
-            </div>
-        </div>
-        <div>
-                <ng-container *ngIf="getModule==true; then parameter else daqtem"></ng-container>
-                <ng-template #parameter> 
-                    <app-daq></app-daq>
-                </ng-template>
-    
-                <ng-template #daqtem> 
+</ng-template>
+<ng-template #menutem>
+        <div class="container">
+                <div class="row">
+               
+                    <div class="col-md-1">
+                        <a href="#" (click)="testClick('param')">Parametre</a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="#" (click)="testClick('daq')">DAQ</a>
+                    </div>
+                </div>
+                <div>
+                    <ng-container *ngIf="getModule(); then paramtem else daqtem"></ng-container>
+                    <ng-template #paramtem> 
                         <app-parameter></app-parameter>
-                </ng-template>
-    
+                    </ng-template>
+                
+                    <ng-template #daqtem> 
+                        <app-daq></app-daq>
+                        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                    </ng-template>   
+                </div>
         </div>
-</div-->
+</ng-template>
+
+

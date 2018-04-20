@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AcquisitionService } from '../../service/acquisition.service';
+import {Popup} from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-help',
@@ -9,7 +10,8 @@ import { AcquisitionService } from '../../service/acquisition.service';
 })
 export class HelpComponent implements OnInit {
   etatBtn:boolean;
-  constructor(private serviceAcq: AcquisitionService,private router: Router) { }
+  constructor(private serviceAcq: AcquisitionService,private router: Router,
+              private popup :Popup) { }
 
   ngOnInit() {
   }
@@ -28,6 +30,17 @@ export class HelpComponent implements OnInit {
 
   public getBouton(): boolean{
     return this.etatBtn ;
+  }
+
+  public alert(){
+    this.popup.options = {
+      color:"#5cb85c",
+      header:"Attention",
+      confirmBtnContent:  "test",
+      //cancleBtnContent: "Cancel",
+
+    }
+     this.popup.show(this.popup.options);
   }
 
   public startAcq(){

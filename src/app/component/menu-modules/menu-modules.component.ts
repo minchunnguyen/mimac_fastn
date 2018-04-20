@@ -13,17 +13,28 @@ export class MenuModulesComponent implements OnInit {
   ngOnInit() {
   }
 
-  /*public testClick(module: String):void{
+  public testClick(module: String):void{
     if(module == "param"){
       this.globals.module = true;
-      console.log("hola "+ this.globals.module);
+      this.globals.is_home = false;
+      //console.log("hola "+ this.globals.module);
     }else{
       this.globals.module = false;
-      console.log("hola "+ this.globals.module);
+      this.globals.is_home = false;
+      //console.log("hola "+ this.globals.module);
     }
   }
 
   public getModule():boolean{
     return this.globals.module;
-  }*/
+  }
+
+  public setStatusHome(){
+    this.globals.is_home = false;
+  }
+
+  public getStatusHome():boolean{
+    //console.log("status home"+ this.globals.is_home);
+    return this.globals.is_home;
+  }
 }

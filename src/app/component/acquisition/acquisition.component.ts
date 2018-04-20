@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Parameter } from '../../model/parameter';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-acquisition',
@@ -26,7 +27,7 @@ export class AcquisitionComponent implements OnInit {
   selectedEdge: number = 0;
   selectedSeuilAdc: number = 0; 
   test: boolean =true;
-  constructor(private router: Router) { 
+  constructor(private router: Router, private _location: Location) { 
     this.parameters = {gap: 512, echantil: 25, nbpistes:256, pixelsize: 424, pretrigger: 32, posMax:1024,
       edge:5, selectionMode:false, seuilAdc:15, autoRestart:true,
       numPlan: 0, numSenSor: 1, daqThreshold : 2};
@@ -50,7 +51,7 @@ export class AcquisitionComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['/param']);
+    this.router.navigate(['/']);
   }
   tester(){
     this.test = false;

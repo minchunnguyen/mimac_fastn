@@ -13,15 +13,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthComponent implements OnInit {
   cookieValue = 'UNKNOWN';
-  //authUser: User = new User();
   public  authUser: User = new User();
 
   constructor(private serviceConnex: ConnexionService, private router: Router
               ,private globals: Globals, private cookieService: CookieService) { }
 
   ngOnInit() {
-    //this.cookieService.set( 'Test', 'Hello World' );
-    //this.cookieValue = this.cookieService.get('Test');
     if(localStorage.getItem('user')!=null){
         //this.authUser.login = localStorage.getItem('user');
         this.authUser.login = localStorage.getItem('user');
@@ -34,6 +31,7 @@ export class AuthComponent implements OnInit {
     this.serviceConnex.connexion(this.authUser).subscribe(toto =>{
       this.authUser.connected = toto.result;
       if(this.authUser.connected == 'true'){
+        this.router.navigate(['/home']);
         this.setStatusConnexion(true);
       }
       localStorage.setItem('user',JSON.stringify(this.authUser.login));

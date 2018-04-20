@@ -26,6 +26,7 @@ import { AcquisitionComponent } from './component/acquisition/acquisition.compon
 import { MenuModulesComponent } from './component/menu-modules/menu-modules.component';
 import { CircuitGazComponent } from './component/circuit-gaz/circuit-gaz.component';
 import { AcquisitionService } from './service/acquisition.service';
+import { MonitoringComponent } from './component/monitoring/monitoring.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -39,7 +40,8 @@ export const appRoutes: Routes = [
   { path: 'log', component: LogListComponent},
   { path: 'daq', component: DaqComponent},
   { path: 'acq', component: AcquisitionComponent},
-  { path: 'circuit-gaz', component:CircuitGazComponent}
+  { path: 'circuit-gaz', component:CircuitGazComponent},
+  { path: 'monitoring', component:MonitoringComponent}
 ];
 
 
@@ -60,6 +62,7 @@ export const appRoutes: Routes = [
     AcquisitionComponent,
     MenuModulesComponent,
     CircuitGazComponent,
+    MonitoringComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,7 @@ export const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash : true}),
-    //PopupModule.forRoot()
+    PopupModule.forRoot()
 
   ],
   providers: [TodoService, ConnexionService, LogService, Globals,CookieService, AcquisitionService],

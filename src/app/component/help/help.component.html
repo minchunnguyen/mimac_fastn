@@ -1,36 +1,39 @@
-<div>
-  <h2>
-    DAQ - acquisition
-  </h2>
-</div>
 <div class="container">
+  <div>
+      <h2>
+      acquisition
+        </h2>
+  </div>
+  <popup title="alert">
+    Les tensions du détecteur doivent être éteintes
+  </popup>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
-            <legend> Commandes : </legend>
-            <button class="btn btn-lg btn-primary" type="submit">
-              AUTOCAL</button>
-            <br />
-            <br />
-            <button class="btn btn-lg btn-primary " type="submit">
-              Visualisation des seuils des pistes</button>
-        </div>
-
-        <div class="col-xs-offset-2 col-sm-12 col-md-4 well well-sm">
-          <legend> Démarrage acquisition : </legend>
-          <div class ="row ">
-            <div class = "col-md-offset-2 col-md-2">
-              <label>START </label>
-              <form (ngSubmit)="startAcq()" novalidate>
-                <button type="submit" class=" btn-circle button"></button>
-              </form>
-            </div>
-            <div class = "col-md-offset-2 col-md-2">
-              <label>STOP </label>
-              <form (ngSubmit)="stopAccq()" novalidate>     
-                <button type="submit" class=" btn-circle button-stop"></button>
-              </form>   
-            </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+              <legend> Commandes : </legend>
+              <button class="btn btn-lg btn-primary" (click)="alert()">
+                AUTOCAL</button>
+              <br />
+              <br />
+              <button class="btn btn-lg btn-primary " type="submit">
+                Visualisation des seuils des pistes</button>
           </div>
-      </div>
+
+          <div class="col-xs-offset-2 col-sm-12 col-md-4 well well-sm">
+            <legend> Démarrage acquisition : </legend>
+            <div class ="row ">
+              <div class = "col-md-offset-2 col-md-2">
+                <label>START </label>
+                <form (ngSubmit)="startAcq()" novalidate>
+                  <button type="submit" class=" btn-circle button"></button>
+                </form>
+              </div>
+              <div class = "col-md-offset-2 col-md-2">
+                <label>STOP </label>
+                <form (ngSubmit)="stopAccq()" novalidate>     
+                  <button type="submit" class=" btn-circle button-stop"></button>
+                </form>   
+              </div>
+            </div>
+        </div>
     </div>
 </div>
