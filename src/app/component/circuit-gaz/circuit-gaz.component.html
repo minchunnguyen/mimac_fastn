@@ -1,0 +1,57 @@
+<div>    
+    <div class="row">
+      <div class="col-md-3">
+          <ul>
+              <li> Gaz: </li>
+          </ul>
+      </div>
+      <div class="col-md-1">{{parameters.gaz}}  % </div>
+      <div class="col-md-2">
+          <select [(ngModel)]="selectedGaz">
+              <option *ngFor="let item of tabs_gaz;">{{item}}</option>
+            </select>          
+      </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-md-3">
+            <ul>
+                <li> Pression: </li>
+            </ul>
+        </div>
+        <div class="col-md-1">{{parameters.pression}} mbar</div>
+        <div class="col-md-2">
+            <select [(ngModel)]="selectedPression">
+                <option *ngFor="let item of pressions;">{{item}}</option>
+            </select>          
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="col-md-3">
+            <ul>
+                <li> Mode circulation: </li>
+            </ul>
+        </div>
+        <div class="col-md-1">{{parameters.mode_circulation}}</div>
+        <div class="col-md-2">
+            <select [(ngModel)]="selectedMode">
+                <option *ngFor="let item of modeCirculations;">{{item}}</option>
+            </select>          
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+      <div class="col-md-3">
+          <form (ngSubmit)="goBack()" novalidate>
+              <button type="submit">Retourner</button> 
+          </form>
+      </div>
+      <div class="col-md-3">
+          <form (ngSubmit)="modifier()" novalidate><button type="submit">Valider</button></form>
+      </div>
+    </div>
+      
+  </div>
