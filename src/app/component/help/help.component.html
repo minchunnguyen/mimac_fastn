@@ -21,12 +21,23 @@
           <div class="col-xs-offset-2 col-sm-12 col-md-4 well well-sm">
             <legend> Démarrage acquisition : </legend>
             <div class ="row ">
-              <div class = "col-md-offset-2 col-md-2">
-                <label>START </label>
-                <form (ngSubmit)="startAcq()" novalidate>
-                  <button type="submit" class=" btn-circle button"></button>
-                </form>
-              </div>
+              <ng-container *ngIf="statusAcq == true; then accueil else menu"></ng-container>
+                  <ng-template #accueil>
+                    <div class = "col-md-offset-2 col-md-2">
+                        <label>START </label>
+                          <button type="submit" class=" btn-circle button"></button>
+                    </div>
+                  </ng-template>
+
+                  <ng-template #menu>
+                      <div class = "col-md-offset-2 col-md-2">
+                          <label>START </label>
+                          <form (ngSubmit)="startAcq()" novalidate>
+                            <button type="submit" class=" btn-circle button-non-start"></button>
+                          </form>
+                      </div>
+                  </ng-template>
+
               <div class = "col-md-offset-2 col-md-2">
                 <label>STOP </label>
                 <form (ngSubmit)="stopAccq()" novalidate>     

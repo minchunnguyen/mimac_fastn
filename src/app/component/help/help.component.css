@@ -18,6 +18,21 @@ body { padding-top:30px; }
     animation: glowing 1500ms infinite;
   }
 
+  .button-non-start {
+    background-color: green;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+
 .button-stop{
     background-color: orange;
     -webkit-border-radius: 10px;

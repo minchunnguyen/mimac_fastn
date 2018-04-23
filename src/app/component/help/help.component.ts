@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AcquisitionService } from '../../service/acquisition.service';
 import {Popup} from 'ng2-opd-popup';
+import { Acquisition } from '../../model/acquisition';
+import { Globals } from '../../Globals';
 
 @Component({
   selector: 'app-help',
@@ -10,8 +12,9 @@ import {Popup} from 'ng2-opd-popup';
 })
 export class HelpComponent implements OnInit {
   etatBtn:boolean;
+  acq = new Acquisition();
   constructor(private serviceAcq: AcquisitionService,private router: Router,
-              private popup :Popup) { }
+              private popup :Popup, private globals: Globals) { }
 
   ngOnInit() {
   }
@@ -37,23 +40,30 @@ export class HelpComponent implements OnInit {
       color:"#5cb85c",
       header:"Attention",
       confirmBtnContent:  "test",
-      //cancleBtnContent: "Cancel",
-
     }
      this.popup.show(this.popup.options);
   }
 
   public startAcq(){
-    /*envoie la requête au backend (par méthode POST ?) pour lançer l'acquisistion, si la réponse est oui 
-    => change état de bouton 
-    => il faut avoir un objet qui contient les champs : type de commande, startCycle
-    */
-
-   console.log("Start acq");
+   this.acq.mode = "NORMAL";
+    this.serviceAcq.startAcq(this.acq).subscribe(toto =>{
+      if(toto.result == "true"){
+        this.acq.numCycle = toto.response.startCycle;
+        this.globals.start_acq = true;
+      }
+    });
+   console.log("Start acq at : "+ this.acq.numCycle);
   }
 
   public stopAccq(){
-    console.log("Stop acq");
+    this.serviceAcq.stopAcq().subscribe(toto =>{
+      if(toto.result == "true"){
+        this.globals.start_acq = false;
+      }
+    });    console.log("Stop acq");
   }
 
+  get statusAcq(): boolean{
+    return this.globals.start_acq;
+  }
 }
