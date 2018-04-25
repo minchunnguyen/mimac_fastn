@@ -4,6 +4,9 @@ import { AcquisitionService } from '../../service/acquisition.service';
 import {Popup} from 'ng2-opd-popup';
 import { Acquisition } from '../../model/acquisition';
 import { Globals } from '../../Globals';
+import * as variable from '../../../../hello.js';
+import * as chart from '../../../../D3JSCharts/MonitoringCharts.js';
+import * as chart2 from '../../../../D3JSCharts/CpuLoadMonitorChart.js';
 
 @Component({
   selector: 'app-help',
@@ -13,10 +16,18 @@ import { Globals } from '../../Globals';
 export class HelpComponent implements OnInit {
   etatBtn:boolean;
   acq = new Acquisition();
+  testCarre :number;
   constructor(private serviceAcq: AcquisitionService,private router: Router,
               private popup :Popup, private globals: Globals) { }
 
   ngOnInit() {
+    this.testCarre = variable.carre(5);
+    console.log("Carre: " +this.testCarre);
+  }
+
+  public testHello():void{
+    variable.test2(6);
+    chart.initializeMonitoringCharts();
   }
 
   public  etatBouton(): void {
