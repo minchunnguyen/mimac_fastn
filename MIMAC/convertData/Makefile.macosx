@@ -1,0 +1,154 @@
+##############################
+# MimacSensor                #
+# created by T.DESCOMBES     #
+#                    2005    #
+##############################
+
+MIMACDAQ_DIR     = ../acquisition/daq
+DAQCOMMONPARTS_DIR = ../acquisition/daqCommonParts
+
+MIMACSENSOR_NAME 	=  Convert.bin
+
+MIMAC_DAQ_VERSION	=  "\"2.1\""
+
+CXX 	=  g++ 
+
+OMNIORB_DIR     =  /usr/local
+ORB_LIBDIR      =  $(OMNIORB_DIR)/lib
+ORB_INCDIR      =  $(OMNIORB_DIR)/include
+IDL_COMP        =  /usr/local/bin/omniidl
+
+ORB_DEFS        =  -Wall -fPIC -fno-common \
+		    -I$(ORB_INCDIR) \
+		   -D__OMNIORB4__ \
+		   -D__OSVERSION__=1 -D__darwin__ -D__x86__ 
+
+LIBS        =  -L$(ORB_LIBDIR) -lomniORB4 -lomnithread -lpthread   -L../lib -lMimacTools $(shell root-config --libs) -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread  
+
+DEFS		=  $(ORB_DEFS) -D_REENTRANT -DOMNIORB_POA -DDAQ_SOFTWARE_VERSION=$(TT_DAQ_VERSION)
+
+
+CXX_ATHLON_FLAGS = -march=athlon-tbird -pipe \
+		   -ffast-math -fomit-frame-pointer
+
+CXX_XEON_FLAGS = -march=x86-64 -pipe \
+		 -ffast-math -fomit-frame-pointer
+		    
+CXX_OPTERON_FLAGS = -march=opteron -pipe \
+		    -ffast-math -fomit-frame-pointer
+
+CXXFLAGS    	=  -O0 -g		    
+
+CPPFLAGS	=  -I../acquisition/sensor \
+		   -IgenIDL		\
+		   -I$(MIMACDAQ_DIR)/DaqToSensor	\
+		   -I$(MIMACDAQ_DIR)/SensorToDaq 	\
+		   -IDaqToSensorItf_i			\
+		   -IFifo				\
+		   -I$(DAQCOMMONPARTS_DIR)		\
+		   -I../acquisition/sensor/micro \
+		    -I../acquisition/sensor/MimacUsbConnection \
+		   -I../acquisition/sensor/MimacDetector \
+		   -I../acquisition/sensor/FakeMimacDetector \
+		   -I../analysis/DataMimacTools/include \
+		   -I../analysis/TEventFileAccess \
+  		   -I../analysis/MimacObjectAnalysis/include \
+		    $(shell root-config --cflags) \
+		    -I ../acquisition/daq/MimacDaqDataBaseConnection
+
+
+LD		=  /usr/bin/g++
+LDFLAGS 	=  -O3 -Wall -Wno-unused
+
+IDL_FLAGS =   -bcxx -CgenIDL 			\
+		         -I$(DAQCOMMONPARTS_DIR)/IDLTypedef	\
+		         -IgenIDL 				\
+		         -I$(MIMACDAQ_DIR)/DaqToSensorItf	\
+		         -I$(MIMACDAQ_DIR)/SensorToDaqItf 	\
+		         -I$(MIMACDAQ_DIR)/IDLTypedef  		\
+		         -I$(MIMACDAQ_DIR)
+		   		 
+IDL = $(MIMACDAQ_DIR)/DaqToSensorItf/DaqToSensorItf.idl      \
+		  $(MIMACDAQ_DIR)/SensorToDaqItf/SensorToDaqItf.idl  	   \
+	 	  $(MIMACDAQ_DIR)/IDLTypedef/AdcDataType.idl 		   \
+		  $(MIMACDAQ_DIR)/IDLTypedef/Coordinates.idl 		   \
+		  $(MIMACDAQ_DIR)/IDLTypedef/AcquisitionOperatingModeType.idl \
+		  $(MIMACDAQ_DIR)/IDLTypedef/CycleAdcDataSequenceType.idl	   \
+   		  $(MIMACDAQ_DIR)/IDLTypedef/Exceptions.idl		   \
+		  $(MIMACDAQ_DIR)/IDLTypedef/SensorHardwareParamType.idl \
+		  $(MIMACDAQ_DIR)/IDLTypedef/AcquisitionOperatingModeType.idl \
+		  $(MIMACDAQ_DIR)/MimacConstants.idl		   \
+                  $(DAQCOMMONPARTS_DIR)/IDLTypedef/LogType.idl		   \
+		  $(DAQCOMMONPARTS_DIR)/IDLTypedef/TimeDataType.idl	  
+		  
+SKELS_STUBS_DIR = genIDL
+
+
+SKELS_STUBS     = $(SKELS_STUBS_DIR)/DaqToSensorItfSK.cc    $(SKELS_STUBS_DIR)/DaqToSensorItf.hh  \
+                  $(SKELS_STUBS_DIR)/SensorToDaqItfSK.cc    $(SKELS_STUBS_DIR)/SensorToDaqItf.hh \
+                  $(SKELS_STUBS_DIR)/ADCDataTypeSK.cc           $(SKELS_STUBS_DIR)/ADCDataType.hh \
+                  $(SKELS_STUBS_DIR)/CoordTypeSK.cc             $(SKELS_STUBS_DIR)/CoordType.hh \
+                  $(SKELS_STUBS_DIR)/ExceptionsSK.cc            $(SKELS_STUBS_DIR)/Exceptions.hh \
+		  $(SKELS_STUBS_DIR)/SensorHardwareParamTypeSK.cc  $(SKELS_STUBS_DIR)/SensorHardwareParamType.hh \
+                  $(SKELS_STUBS_DIR)/AcquisitionOperatingModeTypeSK.cc $(SKELS_STUBS_DIR)/AcquisitionOperatingModeType.hh \
+		  $(SKELS_STUBS_DIR)/TimeDataTypeSK.cc		$(SKELS_STUBS_DIR)/TimeDataType.hh
+
+
+CORBA_OBJS      = $(SKELS_STUBS_DIR)/DaqToSensorItfSK.o	\
+		  $(SKELS_STUBS_DIR)/SensorToDaqItfSK.o	\
+		  $(SKELS_STUBS_DIR)/CoordinatesSK.o 		\
+		  $(SKELS_STUBS_DIR)/AdcDataTypeSK.o		\
+		  $(SKELS_STUBS_DIR)/CycleAdcDataSequenceTypeSK.o \
+		  $(SKELS_STUBS_DIR)/ExceptionsSK.o 		\
+		  $(SKELS_STUBS_DIR)/SensorHardwareParamTypeSK.o \
+                  $(SKELS_STUBS_DIR)/AcquisitionOperatingModeTypeSK.o \
+		  $(SKELS_STUBS_DIR)/LogTypeSK.o
+
+
+MIMACSENSOR_OBJS  =	 $(DAQCOMMONPARTS_DIR)/AcquisitionORB/AcquisitionORB.o	\
+		  ../acquisition/sensor/Fifo/Fifo.o	\
+		  ../analysis/DataMimacTools/src/ReadMimacEvent.o \
+		  ../analysis/TEventFileAccess/TEventFileAccess.o \
+		  ../analysis/MimacObjectAnalysis/src/MimacObjectAnalysis.o \
+		  Convert.o
+
+
+#######################
+# DEPENDENCE'S RULES  #
+#######################
+
+%.o: %.cc
+	$(CXX) -c $< -o $@ $(CXXFLAGS) $(CPPFLAGS) $(DEFS)
+	
+%.o: %.cpp
+	$(CXX) -c $< -o $@ $(CXXFLAGS) $(CPPFLAGS) $(DEFS)
+	
+all:: $(MIMACSENSOR_NAME)
+
+clean::
+	@echo Remove generated files...
+	@rm -f *.o 
+	@rm -f $(SKELS_STUBS_DIR)/*.hh
+	@rm -f $(SKELS_STUBS_DIR)/*.cc
+	@rm -f $(MIMACSENSOR_NAME)
+	@rm -rf genIDL/DaqApplication/*
+	@find . \( -name "*.bak" -o -name "*.class" -o -name "core*" \) -exec rm -f '{}' \;
+	@for i in $(CORBA_OBJS) $(MIMACSENSOR_OBJS) $(MIMACDAQ_OBJS); do  rm -f $$i ; done
+
+$(SKELS_STUBS): 
+	@echo Precompiling IDL Files
+	if test -x $(IDL_COMP) ; then \
+	  rm -f $(SKELS_STUBS_DIR)/$(SKELS_STUBS) ; \
+	  for f in $(IDL) ; do $(IDL_COMP) $(IDL_FLAGS) $$f ; done \
+	else \
+	  @echo Can not find omniidl ;\
+	  @exit 0 ;\
+	fi
+
+
+$(MIMACSENSOR_NAME): $(CORBA_OBJS) $(MIMACSENSOR_OBJS)
+	rm -f $@
+	g++ -c Convert.cc -o Convert.o $(CXXFLAGS) $(CPPFLAGS) $(DEFS)
+	$(LD) $(LDFLAGS) -o $@ \
+	$(CORBA_OBJS) $(MIMACSENSOR_OBJS) $(LIBS)
+	
