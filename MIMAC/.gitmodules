@@ -1,8 +1,0 @@
-[submodule "acquisition"]
-	path = acquisition
-	url = https://gitlab.in2p3.fr/thierry-descombes/mimac_acquisition.git
-
-[submodule "analysis"]
-	path = analysis
-	url = https://gitlab.in2p3.fr/thierry-descombes/mimac_analysis.git
-

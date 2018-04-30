@@ -7,7 +7,7 @@ import { Globals } from '../../Globals';
 import * as variable from '../../../../hello.js';
 import * as chart from '../../../../D3JSCharts/MonitoringCharts.js';
 import * as chart2 from '../../../../D3JSCharts/CpuLoadMonitorChart.js';
-import {D3Service, D3,ScaleLinear, Transition } from 'd3-ng2-service';
+//import {D3Service, D3,ScaleLinear, Transition } from 'd3-ng2-service';
 
 @Component({
   selector: 'app-help',
@@ -18,13 +18,13 @@ export class HelpComponent implements OnInit {
   etatBtn:boolean;
   acq = new Acquisition();
   testJS :number;
-  private d3: D3;
+  //private d3: D3;
   constructor(private serviceAcq: AcquisitionService,private router: Router,
               private popup :Popup, private globals: Globals) { }
 
   ngOnInit() {
     let self = this;
-    let d3 = this.d3;
+    //let d3 = this.d3;
     this.testJS = variable.carre(5);
     console.log("Carre: " +this.testJS);
   }
@@ -32,7 +32,7 @@ export class HelpComponent implements OnInit {
   public testHello():void{
     variable.test2(6);
     //chart2.draw_cpuLoadMonitorChart();
-    chart.updateMonitoringCharts();
+    //chart.updateMonitoringCharts();
   }
 
   public  etatBouton(): void {
